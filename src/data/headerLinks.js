@@ -7,14 +7,14 @@ export const headerLinks = [
     },
     {
         id: 9997, 
-        title: "Hotels",
-        url: "/hotels",
+        title: "Properties",
+        url: "/properties",
         sublinks: []
     },
     {
         id: 9998, 
-        title: "Blog",
-        url: "/blog",
+        title: "News",
+        url: "/news",
         sublinks: []
     },
     {

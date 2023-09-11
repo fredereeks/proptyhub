@@ -8,24 +8,24 @@ import { features } from '@/data'
 export default function Home() {
     return (
         <main className="relative">
-            <section className="relative bg-white py-20 px-4">
+            <section className="relative bg-white py-20 px-4 after:absolute after:left-0 after:top-0 after:w-full after:h-full after:bg-[#0003]">
                 <Image src={estate_dining} alt="ProptyHub Hero" fill={true} className="left-0 top-0 object-cover" />
-                <div className="relative max-w-screen-lg mx-auto w-full py-20 flex flex-col gap-10">
+                <div className="relative max-w-screen-lg mx-auto w-full py-20 flex flex-col gap-10 z-10">
                     <div className="py-5 flex flex-col gap-3 text-center">
                         <h2 className="w-full max-w-lg mx-auto text-2xl sm:text-3xl md:text-4xl font-semibold text-white">The Best Place to Find your Home for Safe Living.</h2>
                         <p className="text-sm sm:text-base leading-loose text-white">We are here to help you find, sell or rent your home faster, cheaper and sooner. </p>
                         <div className="flex justify-center items-center gap-3 mx-auto w-full max-w-sm py-5">
-                            <Link href="/homes" className="rounded-md p-4 hover:bg-slate-600 hover:text-white border-2 border-slate-600 bg-slate-50/50 text-slate-600 text-base text-center flex-1 cursor-pointer flex justify-center items-center gap-2 font-bold">Get Started <FaChevronRight className="text-xs text-inherit" /></Link>
-                            <Link href="/homes" className="rounded-md p-4 bg-slate-600 text-white border-2 border-transparent hover:border-slate-600 hover:bg-white hover:text-slate-600 text-base text-center flex-1 cursor-pointer flex justify-center items-center gap-2 font-bold">Submit Property <FaChevronRight className="text-xs text-inherit" /></Link>
+                            <Link href="/homes" className="max-w-[10rem] sm:max-w-[15rem] rounded-md py-3 px-2 sm:p-4 hover:bg-slate-600 hover:text-white border border-slate-600 bg-slate-50/50 text-slate-600 text-sm sm:text-base text-center flex-1 cursor-pointer flex justify-center items-center gap-1 sm:gap-2 font-bold">Get Started <FaChevronRight className="text-xs text-inherit" /></Link>
+                            <Link href="/homes" className="max-w-[10rem] sm:max-w-[15rem] rounded-md py-3 px-2 sm:p-4 bg-slate-600 text-white border border-transparent hover:border-slate-600 hover:bg-white hover:text-slate-600 text-sm sm:text-base text-center flex-1 cursor-pointer flex justify-center items-center gap-1 sm:gap-2 font-bold">Submit Property <FaChevronRight className="text-xs text-inherit" /></Link>
                         </div>
                     </div>
 
                 </div>
             </section>
             <section className="bg-gray-100 py-20 px-4">
-                <div className="max-w-screen-lg relative mx-auto py-10 flex flex-col gap-4">
+                <div className="max-w-screen-lg relative mx-auto flex flex-col gap-4">
                     <div className="flex flex-col gap-2 max-w-lg mx-auto text-left sm:text-center">
-                        <h2 className="w-full max-w-md text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-800">Our Featured Properties</h2>
+                        <h2 className="w-full max-w-md text-2xl sm:text-3xl md:text-4xl font-semibold text-indigo-600">Our Featured Properties</h2>
                         <p className="text-sm pr-2 sm:pr-0 leading-loose text-slate-500 text-justify">We have awesome properties you just cannot afford to miss!</p>
                     </div>
                     {/* <div className="col-span-1 md:col-span-3 pt-6 pb-4 grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}> */}
@@ -37,14 +37,14 @@ export default function Home() {
                                     <div className="absolute right-0 bottom-0 bg-slate-600/80 sm:bg-slate-600/50 p-4 flex flex-col gap-3 z-20 rounded-md text-white">
                                         <div className="flex flex-col">
                                             <h4 className="text-xs md:text-sm text-inherit font-bold">&#8358;{feature.price.toLocaleString()}</h4>
-                                            <p className="text-[.7rem] text-inherit font-thin">{feature.title}</p>
+                                            <p className="text-[.7rem] text-inherit font-extralight">{feature.title}</p>
                                         </div>
                                         <div className="pt-2 flex gap-2 justify-between items-center">
                                             {
                                                 Object.entries(feature.extras).map(([key, value], i) => (
                                                     <div key={i} className="flex gap-1 items-center text-[.6rem] sm:text-[.7rem] text-white">
-                                                        <p className="text-inherit font-thin">{key[0].toUpperCase()}{key.slice(1)}:</p>
-                                                        <p className="text-inherit font-thin">{value}</p>
+                                                        <p className="text-inherit font-light">{key[0].toUpperCase()}{key.slice(1)}:</p>
+                                                        <p className="text-inherit font-light">{value}</p>
                                                     </div>
                                                 ))
                                             }

@@ -36,15 +36,14 @@ export default function Header() {
     }
 
     return (
-        <header ref={headerRef} className={`bg-white flex flex-col py-2 md:px-4 w-full top-0 left-0 z-[999] ${fixed ? 'fixed shadow-md' : ''}`}>
-            <div className={`w-full max-w-screen-lg mx-auto relative px-4 md:px-0 flex justify-between items-center gap-2`}>
+        <header ref={headerRef} className={`bg-white relative flex flex-col py-2 md:px-4 w-full h-auto top-0 left-0 z-[999] ${fixed ? 'fixed shadow-md' : ''}`}>
+            <div className={`w-full max-w-screen-lg mx-auto relative px-4 md:px-0 flex justify-between items-center gap-2 overflow-x-hidden`}>
                 <Link href="/" className="w-max"><h2 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-700">Propty<span className="text-indigo-600">Hub</span>.</h2></Link>
-                <nav ref={navRef} style={{ left: '0 !important' }} className={`absolute md:relative flex-1 flex flex-col md:flex-row md:items-center shadow-md transition-all duration-300 ${navShow ? '-left-[0px] top-full z-50 w-[110%]' : 'left-[110%] md:left-0 z-0 top-full'} md:top-0 w-screen md:w-max md:shadow-none bg-white -mx-2 md:mx-0`}>
+                <nav ref={navRef} className={`absolute md:relative flex-1 flex flex-col md:flex-row md:items-center shadow-md transition-all duration-300 ${navShow ? 'left-0 top-[110%] z-50 w-[110%]' : 'left-[110%] md:left-0 z-0 top-full'} md:top-0 w-screen md:w-max md:shadow-none bg-white md:mx-0`}>
                     <ul className="list-none flex-1 flex flex-col md:flex-row md:justify-center md:items-center gap-0">
                         {
                             headerLinks.map((link) => <LinkCard key={link.id} {...link} />)
                         }
-                        {/* <Link href="/auth/login" className="relative flex gap-2 items-center self-center rounded-sm w-full md:w-max md:ml-5 px-4 pt-1 pb-2 h-max bg-indigo-600 text-white text-sm">Login/Register <FaCaretRight className='text-slate-50 mt-1 rotate-0 text-sm font-extralight' /></Link> */}
                     </ul>
                     <Link href="/auth/login" className="md:rounded-md py-2 px-5 w-full md:w-max bg-indigo-600 text-white border border-transparent hover:border-indigo-600 hover:bg-white hover:text-indigo-600 text-sm text-center cursor-pointer flex items-center gap-2 self-end"><IoLogInOutline className="text-inherit" /> Login</Link>
 

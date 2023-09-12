@@ -20,7 +20,7 @@ export default function Properties() {
                 <div className="relative max-w-screen-lg mx-auto w-full grid grid-cols-[1.5fr_.5fr_1fr_1fr] gap-3 grid-flow-dense">
                     <div className="col-span-3 sm:col-span-2 md:col-span-1 py-5 flex flex-col gap-3 justify-center">
                         <h2 className="w-full max-w-lg mx-auto text-2xl sm:text-3xl md:text-4xl font-bold text-slate-700">Find the <span className="text-indigo-600">Best Places</span> Near You.</h2>
-                        <p className="text-sm sm:text-base leading-loose text-slate-600">Discover beatiful places to live nearby and comfortably with your family. </p>
+                        <p className="text-sm sm:text-base leading-loose text-slate-600">Discover beautiful places to live nearby and comfortably with your family. </p>
                     </div>
                     <div className="col-span-1 sm:col-span-2 grid place-items-center rounded-md overflow-hidden relative h-[180px] sm:h-[200px] md:h-[250px] group">
                         <Image src={estate_lawn} alt="Estate Dining" fill={true} className="left-0 top-0 object-cover" />

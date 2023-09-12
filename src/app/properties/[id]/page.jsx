@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { FaChevronLeft, FaShareAlt } from 'react-icons/fa'
-import { IoHomeOutline, IoBedOutline, IoCheckmarkCircleOutline, IoBrushOutline, IoSquareOutline, IoHeartOutline, IoSearchOutline } from 'react-icons/io5'
+import { FaChevronLeft } from 'react-icons/fa'
+import { IoHomeOutline, IoBedOutline, IoCheckmarkCircleOutline, IoCafeOutline, IoBuildOutline, IoBriefcaseOutline, IoLibraryOutline, IoConstructOutline, IoKeyOutline, IoBrushOutline, IoSquareOutline, IoHeartOutline, IoSearchOutline, IoShareOutline } from 'react-icons/io5'
 
-import { estate_lit, estate_living_room, estate_bathroom, estate_eating_table } from '@/assets/images'
+// import { estate_lit, estate_living_room, estate_bathroom, estate_eating_table } from '@/assets/images'
 import { features } from '@/data'
 import { PropertyCard } from '@/components'
 
@@ -13,15 +13,24 @@ export const metadata = {
     description: 'A great platform to rent, buy or sell properties without a crazy commission. We make getting financing or buying a new home easy and efficient',
 }
 
-    const getProperty = async(id) => {
-        const data =  features.filter(el => el.id.toString() === id)
-        return data;
-    }
+const getProperty = async (id) => {
+    const data = features.find(el => el.id.toString() === id)
+    return data;
+}
 
-export default async function SingleProperty({params}) {
-    const {id} = params;
+export default async function SingleProperty({ params }) {
+    const { id } = params;
     const data = await getProperty(id);
-    console.log({data});
+    const icons = {
+        "beds": <IoBedOutline className="text-sm text-inherit" />,
+        "baths": <IoBrushOutline className="text-sm text-inherit" />,
+        "rooms": <IoKeyOutline className="text-sm text-inherit" />,
+        "apartments": <IoHomeOutline className="text-sm text-inherit" />,
+        "shops": <IoConstructOutline className="text-sm text-inherit" />,
+        "sqft": <IoSquareOutline className="text-sm text-inherit" />,
+        "status": <IoCheckmarkCircleOutline className="text-sm text-inherit" />,
+        "stories": <IoBuildOutline className="text-sm text-inherit" />,
+    }
 
     return (
         <main className="relative">
@@ -31,24 +40,62 @@ export default async function SingleProperty({params}) {
                     <div className="flex flex-col gap-3 md:flex-row md:justify-between">
                         <div className="flex-1 flex flex-col">
                             <h2 className="w-full max-w-md text-2xl sm:text-3xl font-semibold text-slate-700">{data.title}</h2>
-                            <p className="text-sm pr-2 sm:pr-0 leading-loose text-slate-500 text-justify">{data.address},{data.city},{data.country}</p>
+                            <p className="text-sm pr-2 pt-1 sm:pr-0 leading-tight text-slate-500 text-justify">{data.address}, {data.city}, {data.country}.</p>
                         </div>
-                        <div className="flex-1 flex items-end justify-end gap-2">
-                            <button className="rounded-md py-2 px-4 w-max hover:bg-indigo-200 hover:text-white hover:border-indigo-300 bg-indigo-50 border border-indigo-200 text-indigo-600 text-xs justify-center cursor-pointer flex items-center gap-2"> <FaShareAlt className="text-sm text-inherit" /> Share</button>
-                            <button className="rounded-md py-2 px-4 w-max hover:bg-indigo-200 hover:text-white hover:border-indigo-300 bg-indigo-50 border border-indigo-200 text-indigo-600 text-xs justify-center cursor-pointer flex items-center gap-2"> <IoHeartOutline className="text-sm text-inherit" /> Favorite</button>
-                            <button className="rounded-md py-2 px-4 w-max hover:bg-indigo-200 hover:text-white hover:border-indigo-300 bg-indigo-50 border border-indigo-200 text-indigo-600 text-xs justify-center cursor-pointer flex items-center gap-2"> <IoSearchOutline className="text-sm text-inherit" /> Other Properties nearby</button>
+                        <div className="flex-1 flex items-end md:justify-end gap-2">
+                            <button className="rounded-md py-2 px-4 w-max hover:bg-indigo-200 hover:text-indigo-700 hover:border-indigo-500 bg-indigo-50 border border-indigo-200 text-indigo-600 text-[.6rem] sm:text-sm justify-center cursor-pointer flex items-center gap-2"> <IoShareOutline className="text-sm text-inherit" /> Share</button>
+                            <button className="rounded-md py-2 px-4 w-max hover:bg-indigo-200 hover:text-indigo-700 hover:border-indigo-500 bg-indigo-50 border border-indigo-200 text-indigo-600 text-[.6rem] sm:text-sm justify-center cursor-pointer flex items-center gap-2"> <IoHeartOutline className="text-sm text-inherit" /> Favorite</button>
+                            <button className="rounded-md py-2 px-4 w-max hover:bg-indigo-200 hover:text-indigo-700 hover:border-indigo-500 bg-indigo-50 border border-indigo-200 text-indigo-600 text-[.6rem] sm:text-sm justify-center cursor-pointer flex items-center gap-2"> <IoSearchOutline className="text-sm sm:text-base text-inherit" /> Other Properties nearby</button>
                         </div>
                     </div>
                     <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4">
-                    <div className="relative col-span-2 row-span-2 rounded-md overflow-hidden ">
-                        <Image src={data.image[0]} alt="Other Property Thumbs" fill={true} className="rounded-md p-1 border border-transparent hover:border-indigo-200 object-cover left-0 top-0" />
+                        <div className="relative col-span-2 row-span-2 rounded-md overflow-hidden  border-transparent hover:border-indigo-200 p-2">
+                            <Image src={data.image[0]} alt="Other Property Thumbs" fill={true} className="rounded-md object-cover left-0 top-0 relative" />
+                        </div>
+                        <div className="relative rounded-md overflow-hidden h-[100px] sm:h-[200px] border-transparent hover:border-indigo-200 p-2">
+                            <Image src={data.image[1]} alt="Other Property Thumbs" fill={true} className="rounded-md object-cover left-0 top-0 relative" />
+                        </div>
+                        <div className="relative rounded-md overflow-hidden h-[100px] sm:h-[200px] border-transparent hover:border-indigo-200 p-2">
+                            <Image src={data.image[2]} alt="Other Property Thumbs" fill={true} className="rounded-md object-cover left-0 top-0 relative" />
+                        </div>
                     </div>
-                    <div className="relative rounded-md overflow-hidden h-[100px] sm:h-[200px]">
-                        <Image src={data.image[1]} alt="Other Property Thumbs" fill={true} className="rounded-md p-1 border border-transparent hover:border-indigo-200 object-cover left-0 top-0" />
-                    </div>
-                    <div className="relative rounded-md overflow-hidden h-[100px] sm:h-[200px]">
-                        <Image src={data.image[2]} alt="Other Property Thumbs" fill={true} className="rounded-md p-1 border border-transparent hover:border-indigo-200 object-cover left-0 top-0" />
-                    </div>
+                    <div className="grid md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+                        <div className="relative col-span-2 rounded-md overflow-hidden flex flex-col gap-2 justify-between pb-2">
+                            <div className="rounded-md overflow-hidden flex flex-wrap gap-2 justify-between border border-slate-200 p-2 sm:p-4">
+                                {
+                                    Object.entries(data.extras).map(([key, value], i) => {
+                                        return (
+                                            <div key={i} className="flex-1 flex flex-col gap-1 text-[.6rem] sm:text-[.7rem] text-slate-500">
+                                                <p className="text-inherit font-thin">{key[0].toUpperCase()}{key.slice(1)}</p>
+                                                <div className="flex gap-1 items-center text-[.6rem] sm:text-[.7rem] text-slate-500">
+                                                    {icons[key]}
+                                                    <p className="text-xs text-slate-600 font-medium">{value}</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                                <div className="flex-1 flex flex-col gap-1 text-[.6rem] sm:text-[.7rem] text-slate-500">
+                                    <p className="text-inherit font-thin">Status</p>
+                                    <div className="flex gap-1 items-center text-[.6rem] sm:text-[.7rem] text-slate-500">
+                                        {icons['status']}
+                                        <p className="text-xs text-slate-600 font-medium">Active</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex-1 flex flex-col py-10 pb-5">
+                                <h2 className="w-full max-w-md text-xl sm:text-2xl font-semibold text-slate-700">About this {data?.type[0].toUpperCase()}{data?.type.slice(1)}</h2>
+                                <p className="text-sm py-1 leading-loose text-slate-500 text-justify">{data.title} is an exqusite property that would make your goal feel achieved. Should you come through our great platform to rent, buy or sell properties without a crazy commission. We guarantee we will make getting financing or buying a new home easy and efficient for you from now till eternity.</p>
+                            </div>
+                        </div>
+                        <div className="relative col-span-1 rounded-md overflow-hidden flex flex-col gap-2 justify-between border border-slate-200 p-2 sm:p-4">
+                            <div className="flex-1 flex flex-col">
+                                <p className="text-xs leading-tight text-slate-500 text-justify">Property Price</p>
+                                <h2 className="w-full py-2 max-w-md text-base sm:text-lg font-semibold text-slate-700">&#8358;{data?.price.toLocaleString()}</h2>
+                                <Link href={`/properties/buy/${id}`} className="rounded-md py-2 px-5 w-max bg-indigo-600 text-white border border-transparent hover:border-indigo-600 hover:bg-white hover:text-indigo-600 text-sm text-center cursor-pointer flex items-center gap-2 mt-2"><IoHomeOutline className="text-xs text-inherit" /> Buy Property</Link>
+                            </div>
+
+                        </div>
                     </div>
                     {/* <Image src={estate_lit} alt="Estate Dining" fill={true} className="left-0 top-0 object-cover" /> */}
 
@@ -63,29 +110,8 @@ export default async function SingleProperty({params}) {
                     {/* <div className="col-span-1 md:col-span-3 pt-6 pb-4 grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}> */}
                     <div className="grid-cols-2 sm:grid-cols-3 pt-6 pb-4 grid gap-3">
                         {
-                            features.filter(el => el.id.toString() !== id).slice(3,7).map((feature, i) => (<PropertyCard key={feature.id} {...feature} />))
+                            features.filter(el => el.id.toString() !== id).slice(3, 9).map((feature, i) => (<PropertyCard key={feature.id} {...feature} />))
                         }
-                    </div>
-                </div>
-            </section>
-            <section className="landlord-tenant bg-white py-20 px-5">
-                <div className="max-w-screen-lg mx-auto grid sm:grid-cols-2 auto-rows-auto items-center">
-                    <div className="relative rounded-md overflow-hidden h-[200px] sm:h-[350px]">
-                        <Image src={estate_lit} alt="User Image" fill={true} className="object-cover left-0 top-0" />
-                    </div>
-                    <div className="max-w-md mx-auto w-full flex flex-col gap-3 justify-center py-5 sm:py-10 md:py-20 px-5">
-                        <div className="py-5 justify-center flex flex-col gap-3">
-                            <h2 className="w-full max-w-md text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-800">Single Property House.</h2>
-                            <p className="text-sm leading-loose text-slate-500 text-justify">Proptyhub is trusted by thousands of happy people and companies. Our goal is to provide the best properties at affordable prices. We are business to bring your dream home to you and your family sooner and cheaper.</p>
-                            <div className="flex flex-col gap-3 max-w-md w-full">
-                                <div className="flex gap-5 items-center">
-                                    <p className="text-sm sm:text-base leading-loose text-slate-600 text-justify font-semibold">Price:</p>
-                                    <p className="text-sm sm:text-base leading-loose text-indigo-600 text-justify font-bold">&#8358;30,000,000</p>
-
-                                </div>
-                            </div>
-                            <Link href="/auth/login" className="rounded-md py-2 px-5 w-max bg-indigo-600 text-white border border-transparent hover:border-indigo-600 hover:bg-white hover:text-indigo-600 text-sm text-center flex-1 cursor-pointer flex items-center gap-2 mt-2"><IoHomeOutline className="text-xs text-inherit" /> Buy Property</Link>
-                        </div>
                     </div>
                 </div>
             </section>

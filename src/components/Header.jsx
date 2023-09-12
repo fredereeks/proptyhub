@@ -34,12 +34,13 @@ export default function Header() {
     const toggleDropdown = () => {
         console.log("Workds")
     }
+    // console.log({navShow, fixed})
 
     return (
-        <header ref={headerRef} className={`bg-white relative flex flex-col py-2 md:px-4 w-full h-auto top-0 left-0 z-[999] ${fixed ? 'fixed shadow-md' : ''}`}>
-            <div className={`w-full max-w-screen-lg mx-auto relative px-4 md:px-0 flex justify-between items-center gap-2 overflow-x-hidden`}>
-                <Link href="/" className="w-max"><h2 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-700">Propty<span className="text-indigo-600">Hub</span>.</h2></Link>
-                <nav ref={navRef} className={`absolute md:relative flex-1 flex flex-col md:flex-row md:items-center shadow-md transition-all duration-300 ${navShow ? 'left-0 top-[110%] z-50 w-[110%]' : 'left-[110%] md:left-0 z-0 top-full'} md:top-0 w-screen md:w-max md:shadow-none bg-white md:mx-0`}>
+        <header ref={headerRef} className={`bg-white relative flex flex-col py-2 md:px-4 w-full top-0 left-0 z-[999] ${fixed ? 'fixed shadow-md' : ''}`}>
+            <div className={`w-full max-w-screen-lg mx-auto relative px-4 md:px-0 flex justify-between items-center gap-2`}>
+                <Link href="/" className="w-max"><h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-700">Propty<span className="text-indigo-600">Hub</span>.</h2></Link>
+                <nav style={{left: 0}} ref={navRef} className={`absolute left-0 md:relative flex-1 flex flex-col md:flex-row md:items-center shadow-md transition-all duration-300 ${navShow ? 'max-h-[1000%]' : 'max-h-0 md:max-h-[1000%]'} md:top-0 w-screen md:w-max md:shadow-none bg-white md:mx-0`}>
                     <ul className="list-none flex-1 flex flex-col md:flex-row md:justify-center md:items-center gap-0">
                         {
                             headerLinks.map((link) => <LinkCard key={link.id} {...link} />)

@@ -28,7 +28,7 @@ export default function Properties() {
                     <div className="grid place-items-center rounded-md overflow-hidden relative h-[160px] sm:h-[200px] md:h-[250px] group">
                         <Image src={estate_living_room} alt="Estate Bathroom" fill={true} className="left-0 top-0 object-cover" />
                     </div>
-                    <form className="col-span-4 md:col-span-2 grid grid-cols-2 gap-2 bg-white p-3 sm:p-4 shadow-lg rounded-md overflow-hidden relative group">
+                    <form className="row-start-2 col-span-4 md:col-span-2 grid grid-cols-2 gap-2 bg-white p-3 sm:p-4 shadow-lg rounded-md overflow-hidden relative group">
                         <h2 className="sm:col-span-2 w-full max-w-lg mx-auto text-base sm:text-xl font-bold text-slate-700">Search your Property.</h2>
                         <select name="type" id="type" className="px-3 py-1 text-sm bg-slate-200 text-slate-600 rounded-md">
                             <option value="null">Property Type</option>

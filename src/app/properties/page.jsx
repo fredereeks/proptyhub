@@ -29,22 +29,34 @@ export default function Properties() {
                         <Image src={estate_living_room} alt="Estate Bathroom" fill={true} className="left-0 top-0 object-cover" />
                     </div>
                     <form className="row-start-2 col-span-4 md:col-span-2 grid grid-cols-2 gap-2 bg-white p-3 sm:p-4 shadow-lg rounded-md overflow-hidden relative group">
-                        <h2 className="sm:col-span-2 w-full max-w-lg mx-auto text-base sm:text-xl font-bold text-slate-700">Search your Property.</h2>
+                        <h2 className="col-span-2 w-full max-w-lg mx-auto text-base sm:text-xl font-bold text-slate-700">Search your Property.</h2>
                         <select name="type" id="type" className="px-3 py-1 text-sm bg-slate-200 text-slate-600 rounded-md">
                             <option value="null">Property Type</option>
+                            {[...new Set(features.map(el => el.type))].map((item,id) =>  (
+                                <option key={id}>{item}</option>
+                            ))}
                         </select>
                         <select name="location" id="location" className="px-3 py-1 text-sm bg-slate-200 text-slate-600 rounded-md">
-                            <option value="null">Property Location</option>
+                            <option value="null">Property Price</option>
+                            {[...new Set(features.map(el => el.price))].map((item,id) =>  (
+                                <option key={id}>{item.toLocaleString()}</option>
+                            ))}
                         </select>
                         <select name="type" id="type" className="px-3 py-1 text-sm bg-slate-200 text-slate-600 rounded-md">
-                            <option value="null">Property Type</option>
+                            <option value="null">Property State</option>
+                            {[...new Set(features.map(el => el.state))].map((item,id) =>  (
+                                <option key={id}>{item}</option>
+                            ))}
                         </select>
                         <select name="location" id="location" className="px-3 py-1 text-sm bg-slate-200 text-slate-600 rounded-md">
-                            <option value="null">Property Location</option>
+                            <option value="null">Property Country</option>
+                            {[...new Set(features.map(el => el.country))].map((item,id) =>  (
+                                <option key={id}>{item}</option>
+                            ))}
                         </select>
                         <button type="submit" className="rounded-md mt-1 py-1 px-4 w-max bg-slate-700 text-white hover:bg-slate-800 text-sm text-center cursor-pointer flex items-center gap-2">Search Now <FaArrowRight className="text-xs text-inherit" /> </button>
                     </form>
-                    <div className="col-span-4 sm:col-span-2 grid place-items-center rounded-md overflow-hidden relative h-[160px] sm:h-[200px] md:h-[250px] group">
+                    <div className="col-span-3 sm:col-span-2 grid place-items-center rounded-md overflow-hidden relative h-[160px] sm:h-[200px] md:h-[250px] group">
                         <Image src={estate_reading_table} alt="Estate Bathroom" fill={true} className="left-0 top-0 object-cover" />
                     </div>
                 </div>

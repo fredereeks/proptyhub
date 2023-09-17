@@ -20,7 +20,7 @@ export default function NewsCard({id, image, title, link, createdAt, comments, t
                         <p className="text-[.7rem] text-slate-500">{comments} Comments</p>
                     </div>
                 </div>
-                <h4 className="text-indigo-700 font-semibold truncate whitespace-pre-wrap line-clamp-2 text-justify text-lg sm:text-xl">{title}</h4>
+                <h4 className="text-indigo-700 font-semibold truncate whitespace-pre-wrap line-clamp-2 text-justify text-base sm:text-lg">{title}</h4>
                 <p className="text-slate-500 text-justify leading-loose font-light truncate whitespace-pre-wrap line-clamp-3 text-xs">{text}</p>
             </div>
         </Link>

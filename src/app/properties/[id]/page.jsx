@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaChevronLeft } from 'react-icons/fa'
-import { IoHomeOutline, IoBedOutline, IoCheckmarkCircleOutline, IoCafeOutline, IoBuildOutline, IoBriefcaseOutline, IoLibraryOutline, IoConstructOutline, IoKeyOutline, IoBrushOutline, IoSquareOutline, IoHeartOutline, IoSearchOutline, IoShareOutline } from 'react-icons/io5'
+import { IoHomeOutline, IoBedOutline, IoCheckmarkCircleOutline, IoCafeOutline, IoBuildOutline, IoBriefcaseOutline, IoLibraryOutline, IoConstructOutline, IoKeyOutline, IoWaterOutline, IoTriangleOutline, IoHeartOutline, IoSearchOutline, IoShareOutline } from 'react-icons/io5'
 
 // import { estate_lit, estate_living_room, estate_bathroom, estate_eating_table } from '@/assets/images'
 import { features } from '@/data'
@@ -23,11 +23,11 @@ export default async function SingleProperty({ params }) {
     const data = await getProperty(id);
     const icons = {
         "beds": <IoBedOutline className="text-sm text-inherit" />,
-        "baths": <IoBrushOutline className="text-sm text-inherit" />,
+        "baths": <IoWaterOutline className="text-sm text-inherit" />,
         "rooms": <IoKeyOutline className="text-sm text-inherit" />,
         "apartments": <IoHomeOutline className="text-sm text-inherit" />,
         "shops": <IoConstructOutline className="text-sm text-inherit" />,
-        "sqft": <IoSquareOutline className="text-sm text-inherit" />,
+        "sqft": <IoTriangleOutline className="text-sm text-inherit" />,
         "status": <IoCheckmarkCircleOutline className="text-sm text-inherit" />,
         "stories": <IoBuildOutline className="text-sm text-inherit" />,
     }
@@ -43,9 +43,9 @@ export default async function SingleProperty({ params }) {
                             <p className="text-sm pr-2 pt-1 sm:pr-0 leading-tight text-slate-500 text-justify">{data.address}, {data.city}, {data.country}.</p>
                         </div>
                         <div className="flex-1 flex items-end md:justify-end gap-2">
-                            <button className="rounded-md py-2 px-4 w-max hover:bg-indigo-200 hover:text-indigo-700 hover:border-indigo-500 bg-indigo-50 border border-indigo-200 text-indigo-600 text-[.6rem] sm:text-sm justify-center cursor-pointer flex items-center gap-2"> <IoShareOutline className="text-sm text-inherit" /> Share</button>
-                            <button className="rounded-md py-2 px-4 w-max hover:bg-indigo-200 hover:text-indigo-700 hover:border-indigo-500 bg-indigo-50 border border-indigo-200 text-indigo-600 text-[.6rem] sm:text-sm justify-center cursor-pointer flex items-center gap-2"> <IoHeartOutline className="text-sm text-inherit" /> Favorite</button>
-                            <button className="rounded-md py-2 px-4 w-max hover:bg-indigo-200 hover:text-indigo-700 hover:border-indigo-500 bg-indigo-50 border border-indigo-200 text-indigo-600 text-[.6rem] sm:text-sm justify-center cursor-pointer flex items-center gap-2"> <IoSearchOutline className="text-sm sm:text-base text-inherit" /> Other Properties nearby</button>
+                            <button className="rounded-md py-2 px-4 w-max hover:text-indigo-700 hover:border-indigo-500 bg-indigo-50 border border-indigo-200 text-indigo-600 text-[.6rem] sm:text-sm justify-center cursor-pointer flex items-center gap-2"> <IoShareOutline className="text-sm text-inherit" /> Share</button>
+                            <button className="rounded-md py-2 px-4 w-max hover:text-indigo-700 hover:border-indigo-500 bg-indigo-50 border border-indigo-200 text-indigo-600 text-[.6rem] sm:text-sm justify-center cursor-pointer flex items-center gap-2"> <IoHeartOutline className="text-sm text-inherit" /> Favorite</button>
+                            <button className="rounded-md py-2 px-4 w-max hover:text-indigo-700 hover:border-indigo-500 bg-indigo-50 border border-indigo-200 text-indigo-600 text-[.6rem] sm:text-sm justify-center cursor-pointer flex items-center gap-2"> <IoSearchOutline className="text-sm sm:text-base text-inherit" /> Properties nearby</button>
                         </div>
                     </div>
                     <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4">
@@ -65,7 +65,7 @@ export default async function SingleProperty({ params }) {
                                 {
                                     Object.entries(data.extras).map(([key, value], i) => {
                                         return (
-                                            <div key={i} className="flex-1 flex flex-col gap-1 text-[.6rem] sm:text-[.7rem] text-slate-500">
+                                            <div key={i} className="flex-1 flex flex-col justify-center gap-1 text-[.6rem] sm:text-[.7rem] text-slate-500">
                                                 <p className="text-inherit font-thin">{key[0].toUpperCase()}{key.slice(1)}</p>
                                                 <div className="flex gap-1 items-center text-[.6rem] sm:text-[.7rem] text-slate-500">
                                                     {icons[key]}

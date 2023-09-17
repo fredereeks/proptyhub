@@ -39,7 +39,7 @@ export default function Header() {
     return (
         <header ref={headerRef} className={`bg-white relative flex flex-col py-2 md:px-4 w-full top-0 left-0 z-[999] ${fixed ? 'fixed shadow-md' : ''}`}>
             <div className={`w-full max-w-screen-lg mx-auto px-4 md:px-0 flex justify-between items-center gap-2`}>
-                <Link href="/" className="w-max"><h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-700">Propty<span className="text-indigo-600">Hub</span>.</h2></Link>
+                <Link href="/" className="w-max"><h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-700">Propty<span className="text-indigo-600">Hubs</span>.</h2></Link>
                 <nav style={{left: 0}} ref={navRef} className={`absolute left-0 overflow-hidden md:relative flex-1 flex flex-col md:flex-row md:items-center shadow-md transition-all duration-300 ${navShow ? 'max-h-[1000%] top-full md:top-0' : 'max-h-0 md:max-h-[1000%] -top-[120%]'} md:top-0 w-screen md:w-max md:shadow-none bg-white md:mx-0`}>
                     <ul className="list-none flex-1 flex flex-col md:flex-row md:justify-center md:items-center gap-0">
                         {

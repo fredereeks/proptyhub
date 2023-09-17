@@ -16,7 +16,7 @@ export default function News() {
         <main className="relative">
             <section className="relative py-20 bg-indigo-50 px-4">
                 <div className="relative max-w-screen-lg mx-auto w-full flex flex-col gap-3">
-                    <div className="col-span-3 sm:col-span-2 md:col-span-1 py-5 flex flex-col gap-3 justify-center">
+                    <div className="col-span-3 sm:col-span-2 md:col-span-1 py-5 flex flex-col gap-3 justify-center text-center">
                         <h2 className="w-full max-w-lg mx-auto text-2xl sm:text-3xl md:text-4xl font-bold text-slate-700">Important and <span className="text-indigo-600">Informative Articles</span> for our Clients.</h2>
                         <p className="text-sm sm:text-base leading-loose text-slate-600">Discover from our blogs, the latest updates, properties and trending news in the real estate terrain. </p>
                     </div>

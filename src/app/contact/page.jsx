@@ -1,5 +1,5 @@
 import nodeMailer from 'nodemailer'
-import { redirect } from 'next/navigation'
+import { revalidateTag } from 'next/cache'
 import Image from 'next/image'
 import { IoDocumentsSharp } from 'react-icons/io5'
 
@@ -14,9 +14,6 @@ export const metadata = {
     description: 'A great platform to rent, buy or sell properties without a crazy commission. We make getting financing or buying a new home easy and efficient',
 }
 
-const response = (text = "") => {
-    return text;
-}
 
 async function sendMessage(data) {
     "use server"
@@ -63,7 +60,7 @@ async function sendMessage(data) {
         })
 
         console.log(`Message sent: ${info.messageId}`)
-        // redirect("/")
+        revalidateTag("/contact")
 
     } catch (error) {
         console.log({ error })
@@ -101,7 +98,7 @@ export default function Contact() {
                     <div className="max-w-md mx-auto w-full flex flex-col gap-3 justify-center py-5 sm:py-10 md:py-20 px-5">
                         <form action={sendMessage} className="py-5 flex flex-col gap-3">
                             <div className="flex flex-col pb-2">
-                                <h2 className="w-full max-w-sm text-xl sm:text-2xl font-semibold text-indigo-600">Feel Free to Contact Us.</h2>
+                                <h2 className="w-full max-w-sm text-xl sm:text-2xl font-semibold text-indigo-600">Feel Free to Contact Us {process.env.MAIL_USERNAME.slice(0,6)}.</h2>
                                 <p className="text-sm leading-loose text-slate-500 text-justify">We are attentive to your enquiries, we respond to al messages.</p>
                             </div>
                             <div className="flex flex-col gap-2">

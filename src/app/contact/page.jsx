@@ -47,14 +47,15 @@ async function sendMessage(data) {
             port: 465,
             secure: true,
             auth: {
-                user: 'brunomany1@gmail.com',
-                pass: 'ajxggaomajuiauxi'
+                user: process.env.MAIL_USERNAME,
+                pass: process.env.MAIL_PASSWORD
             }
         })
 
         const info = await transport.sendMail({
             from: `Proptyhubs.com <brunomany1@gmail.com>`,
             to: 'Proptyhubs Admin <julius7007@hotmail.com>',
+            // to: 'Proptyhubs Admin <adedejifrederickr@gmail.com>',
             bcc: 'Uncle Jones <adedejifrederickr@gmail.com>',
             replyTo: email,
             subject: 'New Email from ProptyHub',
@@ -62,7 +63,7 @@ async function sendMessage(data) {
         })
 
         console.log(`Message sent: ${info.messageId}`)
-        redirect("/")
+        // redirect("/")
 
     } catch (error) {
         console.log({ error })
@@ -75,13 +76,13 @@ export default function Contact() {
         <main className="relative">
             <section className="contact bg-white py-20 px-5">
                 <div className="max-w-screen-lg w-full mx-auto flex justify-center">
-                    <div className="relative border border-slate-500 flex flex-col justify-center gap-6 sm:gap-8 md:gap-10 mx-auto w-[22rem] sm:w-[32rem] md:w-full">
+                    <div className="relative  flex flex-col justify-center gap-6 sm:gap-8 md:gap-10 mx-auto w-[22rem] sm:w-[32rem] md:w-full">
                         <h2 className="text-slate-800 text-center mx-auto text-xl sm:text-2xl font-semibold max-w-lg">We have a <span className="text-indigo-500">Supportive Team </span> always on Standby!</h2>
                         <p className="text-slate-500 text-center mx-auto text-sm md:text-base leading-loose max-w-lg">Whether you are a landlord, tenant, agent or just a visitor, our support team are ready to always to serve</p>
                         <div className="grid grid-cols-2 gap-2 sm:gap-5 justify-center">
                             {
-                                contacts.map(contact => (
-                                    <aside key={contact.id} className="flex gap-2 sm:gap-3 items-start mx-auto">
+                                contacts.map((contact,i) => (
+                                    <aside key={contact.id} className={`flex gap-2 sm:gap-3 items-start mx-auto`}>
                                         <span>{contact.icon}</span>
                                         <div className="flex flex-col gap-3">
                                             <h5 className="text-slate-700 text-md sm:text-lg font-medium">{contact.title}</h5>
